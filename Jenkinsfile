@@ -56,7 +56,7 @@ pipeline {
             steps{
                 echo 'pushing image to docker hub coming in next build ...'
 		script{
-			withDockerRegistry(credentialsId: 'dockerhub'){
+			withDockerRegistry(credentialsId: 'dockerhub', toolName: 'myDocker'){
 				image.push();
 				image.push('latest');
 			}
