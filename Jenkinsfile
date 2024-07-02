@@ -46,6 +46,7 @@ pipeline {
                         error "Docker build failed: ${e.message}"
                     }
                 }
+		    sh 'docker images'
                // withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASS', usernameVariable: 'DOCKER_USER')]){
                 //    sh "docker build -t $DOCKER_USER/simplilearn-test-project:test ."
                 //}
