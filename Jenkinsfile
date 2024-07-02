@@ -4,6 +4,7 @@ pipeline {
 		dockerHome = tool 'myDocker'
 		mavenHome = tool 'myMaven'
 		PATH = "$dockerHome/bin:$mavenHome/bin:$PATH"
+	    DOCKER_IMAGE = 'jossy10/docker-jenkins-project-test'
 	}
     
    // options {
@@ -57,8 +58,10 @@ pipeline {
                 echo 'pushing image to docker hub coming in next build ...'
 		script{
 			withDockerRegistry(credentialsId: 'dockerhub', toolName: 'myDocker'){
-				image.push();
-				image.push('latest');
+				//image.push();
+				//image.push('latest');
+				docker.push("jossy10/docker-jenkins-project-test:${env.BUILD_NUMBER}", 'jossy10/project-tests')
+                    		docker.push("${DOCKER_IMAGE}:latest", 'jossy10/project-tests')
 			}
 		}
             }
