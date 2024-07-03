@@ -56,13 +56,11 @@ pipeline {
         stage('Push Docker Image'){
             steps{
                 echo 'pushing image to docker hub coming in next build ...'
-		//sh 'docker push jossy10/docker-jenkins-project-test:0.0.${BUILD_NUMBER}'
+		sh 'docker push jossy10/docker-jenkins-project-test:0.0.${BUILD_NUMBER}'
 		script{
-			dockerImage.push();
-			dockerImage.push('0.0.[${env.BUILD_NUMBER}]');
+			//dockerImage.push();
+			//dockerImage.push('latest');
 		//	withDockerRegistry(credentialsId: 'dockerhub', toolName: 'myDocker'){
-				//image.push();
-				//image.push('latest');
 		//		docker.push("jossy10/docker-jenkins-project-test:${env.BUILD_NUMBER}", 'jossy10/project-tests')
                   //  		docker.push("${DOCKER_IMAGE}:latest", 'jossy10/project-tests')
 		}
