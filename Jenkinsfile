@@ -56,7 +56,7 @@ pipeline {
         stage('Push Docker Image'){
             steps{
                 echo 'pushing image to docker hub coming in next build ...'
-		sh 'docker push jossy10/docker-jenkins-project-test:${BUILD_NUMBER}'
+		sh 'docker push jossy10/docker-jenkins-project-test:0.0.${BUILD_NUMBER}'
 		//script{
 		//	withDockerRegistry(credentialsId: 'dockerhub', toolName: 'myDocker'){
 				//image.push();
