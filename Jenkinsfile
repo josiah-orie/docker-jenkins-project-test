@@ -59,7 +59,7 @@ pipeline {
 		//sh 'docker push jossy10/docker-jenkins-project-test:0.0.${BUILD_NUMBER}'
 		script{
 			dockerImage.push();
-			dockerImage.push('0.0.'${BUILD_NUMBER});
+			dockerImage.push('0.0.'+${BUILD_NUMBER});
 		//	withDockerRegistry(credentialsId: 'dockerhub', toolName: 'myDocker'){
 				//image.push();
 				//image.push('latest');
