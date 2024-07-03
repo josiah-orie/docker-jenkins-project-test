@@ -42,7 +42,7 @@ pipeline {
                 echo 'Building project docker image  ...'
                 script{
                     try{
-                        def image = docker.build("jossy10/docker-jenkins-project-test:${env.BUILD_NUMBER}");
+                        def image = docker.build("jossy10/docker-jenkins-project-test:0.0.${env.BUILD_NUMBER}");
                     }catch (Exception e){
                         error "Docker build failed: ${e.message}"
                     }
