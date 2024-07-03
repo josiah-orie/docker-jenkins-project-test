@@ -42,7 +42,7 @@ pipeline {
                 echo 'Building project docker image  ...'
                 script{
                     try{
-                        def dockerImage = docker.build("jossy10/docker-jenkins-project-test:0.0.${env.BUILD_NUMBER}");
+                 	dockerImage = docker.build("jossy10/docker-jenkins-project-test:0.0.${env.BUILD_NUMBER}");
                     }catch (Exception e){
                         error "Docker build failed: ${e.message}"
                     }
@@ -59,7 +59,7 @@ pipeline {
 		//sh 'docker push jossy10/docker-jenkins-project-test:0.0.${BUILD_NUMBER}'
 		script{
 			dockerImage.push();
-			dockerImage.push('0.0.16');
+			dockerImage.push('0.0.17');
 		//	withDockerRegistry(credentialsId: 'dockerhub', toolName: 'myDocker'){
 				//image.push();
 				//image.push('latest');
